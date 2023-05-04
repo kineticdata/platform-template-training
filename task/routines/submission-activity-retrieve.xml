@@ -1,0 +1,93 @@
+<tree schema_version="1.0">
+    <sourceName>-</sourceName>
+    <sourceGroup>-</sourceGroup>
+    <definitionId>routine_kinetic_submission_activity_retrieve_v1</definitionId>
+    <type>Global Routine</type>
+    <status>Active</status>
+    <taskTree builder_version="" schema_version="1.0" version="">
+        <name>Submission Activity Retrieve</name>
+        <author></author>
+        <notes></notes>
+        <lastID>6</lastID>
+        <taskDefinition id="routine_kinetic_submission_activity_retrieve_v1" name="Submission Activity Retrieve" schema_version="1.0" version="1">
+            <visible>false</visible>
+            <deferrable>true</deferrable>
+            <parameters>
+                <parameter id="Submission Id" label="Submission Id" required="true" tooltip="The Id of the submission in which the activity is related"></parameter>
+                <parameter id="Activity Id" label="Activity Id" required="true" tooltip="The Id of the submission activity"></parameter>
+            </parameters>
+            <handler name="system_tree_call" version="1"></handler>
+            <results format="xml">
+                <result name="Id" tooltip="The submissions id"></result>
+                <result name="Data" tooltip="Data to store in the submission activity"></result>
+                <result name="Description" tooltip="Description of the submission activity"></result>
+                <result name="Label" tooltip="Label for the submission activity"></result>
+                <result name="Type" tooltip="Type of submission activity"></result>
+            </results>
+        </taskDefinition>
+        <request>
+            <task definition_id="system_start_v1" id="start" name="Start" x="41" y="71">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters></parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">kinetic_core_api_v1_1</task>
+                </dependents>
+            </task>
+            <task definition_id="kinetic_core_api_v1" id="kinetic_core_api_v1_1" name="API" x="269" y="77">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="error_handling" label="Error Handling" menu="Error Message,Raise Error" required="true" tooltip="Determine what to return if an error is encountered.">Raise Error</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="method" label="Method" menu="GET,POST,PUT,PATCH,DELETE" required="true" tooltip="GET,POST,PUT,PATCH,DELETE (Defaults to GET)">GET</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="path" label="Path" menu="" required="true" tooltip="Example: /kapps/:kappSlug/forms/:formSlug">/submissions/&lt;%=@inputs['Submission Id']%&gt;/activities/&lt;%=@inputs['Activity Id']%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="body" label="Body" menu="" required="false" tooltip="JSON body if applicable (POST,PUT,PATCH)"></parameter>
+                </parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="No Error" type="Complete" value="@results['API']['Handler Error Message'].to_s.empty?">system_tree_return_v1_2</task>
+                    <task label="Has 404 Error" type="Complete" value="!@results['API']['Handler Error Message'].to_s.empty? &amp;&amp; @results['API']['Response Code'].to_i == 404">system_tree_return_v1_6</task>
+                </dependents>
+            </task>
+            <task definition_id="system_tree_return_v1" id="system_tree_return_v1_2" name="Return Results" x="656" y="218">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Id" label="Id" menu="" required="false" tooltip="The submissions id">&lt;%=JSON.parse(@results['API']['Response Body'])['activity']['id']%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Data" label="Data" menu="" required="false" tooltip="Data to store in the submission activity">&lt;%=JSON.parse(@results['API']['Response Body'])['activity']['data']%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Description" label="Description" menu="" required="false" tooltip="Description of the submission activity">&lt;%=JSON.parse(@results['API']['Response Body'])['activity']['description']%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Label" label="Label" menu="" required="false" tooltip="Label for the submission activity">&lt;%=JSON.parse(@results['API']['Response Body'])['activity']['label']%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Type" label="Type" menu="" required="false" tooltip="Type of submission activity">&lt;%=JSON.parse(@results['API']['Response Body'])['activity']['type']%&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents></dependents>
+            </task>
+            <task definition_id="system_tree_return_v1" id="system_tree_return_v1_6" name="Return - Does Not Exist" x="656" y="30">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Id" label="Id" menu="" required="false" tooltip="The submissions id"></parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Data" label="Data" menu="" required="false" tooltip="Data to store in the submission activity"></parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Description" label="Description" menu="" required="false" tooltip="Description of the submission activity"></parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Label" label="Label" menu="" required="false" tooltip="Label for the submission activity"></parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Type" label="Type" menu="" required="false" tooltip="Type of submission activity"></parameter>
+                </parameters>
+                <messages></messages>
+                <dependents></dependents>
+            </task>
+        </request>
+    </taskTree>
+</tree>

@@ -1,0 +1,47 @@
+{
+  "name": "Kinetic Platform Routines",
+  "description": "Routines related to interacting with the Kinetic Platform",
+  "type": "Stored",
+  "handlers": [
+
+  ],
+  "policyRules": [
+    "Admins"
+  ],
+  "trees": [
+    "routine_kinetic_form_create_v1",
+    "routine_kinetic_form_delete_v1",
+    "routine_kinetic_form_retrieve_v1",
+    "routine_kinetic_form_update_v1",
+    "routine_kinetic_forms_retrieve_list_v1",
+    "routine_kinetic_kapp_retrieve_v1",
+    "routine_kinetic_kapp_update_v1",
+    "routine_kinetic_kapps_retrieve_list_v1",
+    "routine_kinetic_space_retrieve_v1",
+    "routine_kinetic_space_update_v1",
+    "routine_kinetic_submission_activities_retrieve_list_v1",
+    "routine_kinetic_submission_activity_create_v1",
+    "routine_kinetic_submission_activity_delete_v1",
+    "routine_kinetic_submission_activity_retrieve_v1",
+    "routine_kinetic_submission_activity_update_v1",
+    "routine_kinetic_submission_create_v1",
+    "routine_kinetic_submission_delete_v1",
+    "routine_kinetic_submission_retrieve_v1",
+    "routine_kinetic_submission_update_status_v1",
+    "routine_kinetic_submission_update_v1",
+    "routine_kinetic_submissions_retrieve_list_v1",
+    "routine_kinetic_team_create_v1",
+    "routine_kinetic_team_delete_v1",
+    "routine_kinetic_team_membership_create_v1",
+    "routine_kinetic_team_membership_delete_v1",
+    "routine_kinetic_team_retrieve_v1",
+    "routine_kinetic_team_update_v1",
+    "routine_kinetic_teams_retrieve_list_v1",
+    "routine_kinetic_user_create_v1",
+    "routine_kinetic_user_delete_v1",
+    "routine_kinetic_user_password_reset_token_create_v1",
+    "routine_kinetic_user_retrieve_v1",
+    "routine_kinetic_user_update_v1",
+    "routine_kinetic_users_retrieve_list_v1"
+  ]
+}

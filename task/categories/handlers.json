@@ -1,0 +1,15 @@
+{
+  "name": "Handlers",
+  "description": "Handlers in the system",
+  "type": "Stored",
+  "handlers": [
+    "kinetic_core_api_v1",
+    "smtp_email_send_v1"
+  ],
+  "policyRules": [
+    "Admins"
+  ],
+  "trees": [
+
+  ]
+}

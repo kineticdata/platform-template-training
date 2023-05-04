@@ -1,0 +1,79 @@
+<tree schema_version="1.0">
+    <sourceName>-</sourceName>
+    <sourceGroup>-</sourceGroup>
+    <definitionId>routine_kinetic_submission_activity_create_v1</definitionId>
+    <type>Global Routine</type>
+    <status>Active</status>
+    <taskTree builder_version="" schema_version="1.0" version="">
+        <name>Submission Activity Create</name>
+        <author></author>
+        <notes></notes>
+        <lastID>5</lastID>
+        <taskDefinition id="routine_kinetic_submission_activity_create_v1" name="Submission Activity Create" schema_version="1.0" version="1">
+            <visible>false</visible>
+            <deferrable>true</deferrable>
+            <parameters>
+                <parameter id="Submission Id" label="Submission Id" required="true" tooltip="Id of the submission to create the activity record for"></parameter>
+                <parameter id="Data" label="Data" required="false" tooltip="Data to store in the submission activity"></parameter>
+                <parameter id="Description" label="Description" required="false" tooltip="Description of the submission activity"></parameter>
+                <parameter id="Label" label="Label" required="false" tooltip="Label for the submission activity"></parameter>
+                <parameter id="Type" label="Type" required="false" tooltip="Type of submission activity"></parameter>
+            </parameters>
+            <handler name="system_tree_call" version="1"></handler>
+            <results format="xml">
+                <result name="Id" tooltip="The Id of the submission activity that was created"></result>
+            </results>
+        </taskDefinition>
+        <request>
+            <task definition_id="system_start_v1" id="start" name="Start" x="41" y="71">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters></parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">kinetic_core_api_v1_1</task>
+                </dependents>
+            </task>
+            <task definition_id="kinetic_core_api_v1" id="kinetic_core_api_v1_1" name="API" x="269" y="77">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="error_handling" label="Error Handling" menu="Error Message,Raise Error" required="true" tooltip="Determine what to return if an error is encountered.">Raise Error</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="method" label="Method" menu="GET,POST,PUT,PATCH,DELETE" required="true" tooltip="GET,POST,PUT,PATCH,DELETE (Defaults to GET)">POST</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="path" label="Path" menu="" required="true" tooltip="Example: /kapps/:kappSlug/forms/:formSlug">/submissions/&lt;%=@inputs['Submission Id']%&gt;/activities</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="body" label="Body" menu="" required="false" tooltip="JSON body if applicable (POST,PUT,PATCH)">&lt;%= 
+ data = {} 
+ data.tap do |json| 
+ 	 json['data'] = @inputs['Data'] if !@inputs['Data'].to_s.empty? 
+ 	 json['description'] = @inputs['Description'] if !@inputs['Description'].to_s.empty? 
+ 	 json['label'] = @inputs['Label'] if !@inputs['Label'].to_s.empty? 
+ 	 json['type'] = @inputs['Type'] if !@inputs['Type'].to_s.empty? 
+ end 
+ data.to_json%&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">system_tree_return_v1_2</task>
+                </dependents>
+            </task>
+            <task definition_id="system_tree_return_v1" id="system_tree_return_v1_2" name="Return Results" x="701" y="78">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Id" label="Id" menu="" required="false" tooltip="The Id of the submission activity that was created">&lt;%=JSON.parse(@results['API']['Response Body'])['activity']['id']%&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents></dependents>
+            </task>
+        </request>
+    </taskTree>
+</tree>

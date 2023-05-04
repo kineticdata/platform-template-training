@@ -1,0 +1,107 @@
+<tree schema_version="1.0">
+    <sourceName>-</sourceName>
+    <sourceGroup>-</sourceGroup>
+    <definitionId>routine_kinetic_kapp_retrieve_v1</definitionId>
+    <type>Global Routine</type>
+    <status>Active</status>
+    <taskTree builder_version="" schema_version="1.0" version="">
+        <name>Kapp Retrieve</name>
+        <author></author>
+        <notes></notes>
+        <lastID>6</lastID>
+        <taskDefinition id="routine_kinetic_kapp_retrieve_v1" name="Kapp Retrieve" schema_version="1.0" version="1">
+            <visible>false</visible>
+            <deferrable>true</deferrable>
+            <parameters>
+                <parameter id="Kapp Slug" label="Kapp Slug" required="false" tooltip="The slug of the Kapp to retrieve"></parameter>
+            </parameters>
+            <handler name="system_tree_call" version="1"></handler>
+            <results format="xml">
+                <result name="Name" tooltip="The name of the kapp"></result>
+                <result name="Slug" tooltip="The slug of the kapp"></result>
+                <result name="After Logout Path" tooltip="The path in which users will be routed upon logout"></result>
+                <result name="Attributes Map JSON" tooltip="A JSON representation of the kapps attributes"></result>
+                <result name="Bundle Path" tooltip="The bundle path configured for the kapp"></result>
+                <result name="Categories JSON" tooltip="A JSON representation of the kapps categories"></result>
+                <result name="Display Type" tooltip="The Display Type of the kapp"></result>
+                <result name="Display Value" tooltip="The Display Value of the kapp"></result>
+                <result name="Exists" tooltip="If the kapp exists"></result>
+                <result name="Security Policies JSON" tooltip="A JSON representation of the kapps security policies"></result>
+            </results>
+        </taskDefinition>
+        <request>
+            <task definition_id="system_start_v1" id="start" name="Start" x="41" y="71">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters></parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">kinetic_core_api_v1_1</task>
+                </dependents>
+            </task>
+            <task definition_id="kinetic_core_api_v1" id="kinetic_core_api_v1_1" name="API" x="269" y="77">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="error_handling" label="Error Handling" menu="Error Message,Raise Error" required="true" tooltip="Determine what to return if an error is encountered.">Raise Error</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="method" label="Method" menu="GET,POST,PUT,PATCH,DELETE" required="true" tooltip="GET,POST,PUT,PATCH,DELETE (Defaults to GET)">GET</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="path" label="Path" menu="" required="true" tooltip="Example: /kapps/:kappSlug/forms/:formSlug">/kapps/&lt;%=@inputs['Kapp Slug']%&gt;?include=details,attributesMap,securityPolicies,categories</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="body" label="Body" menu="" required="false" tooltip="JSON body if applicable (POST,PUT,PATCH)"></parameter>
+                </parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="No Error" type="Complete" value="@results['API']['Handler Error Message'].to_s.empty?">system_tree_return_v1_2</task>
+                    <task label="Has 404 Error" type="Complete" value="!@results['API']['Handler Error Message'].to_s.empty? &amp;&amp; @results['API']['Response Code'].to_i == 404">system_tree_return_v1_6</task>
+                </dependents>
+            </task>
+            <task definition_id="system_tree_return_v1" id="system_tree_return_v1_2" name="Return Results" x="632" y="216">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Name" label="Name" menu="" required="false" tooltip="The name of the kapp">&lt;%=JSON.parse(@results['API']['Response Body'])['kapp']['name']%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Slug" label="Slug" menu="" required="false" tooltip="The slug of the kapp">&lt;%=JSON.parse(@results['API']['Response Body'])['kapp']['slug']%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="After Logout Path" label="After Logout Path" menu="" required="false" tooltip="The path in which users will be routed upon logout">&lt;%=JSON.parse(@results['API']['Response Body'])['kapp']['afterLogoutPath']%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Attributes Map JSON" label="Attributes Map JSON" menu="" required="false" tooltip="A JSON representation of the kapps attributes">&lt;%=JSON.parse(@results['API']['Response Body'])['kapp']['attributesMap'].to_json%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Bundle Path" label="Bundle Path" menu="" required="false" tooltip="The bundle path configured for the kapp">&lt;%=JSON.parse(@results['API']['Response Body'])['kapp']['bundlePath']%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Categories JSON" label="Categories JSON" menu="" required="false" tooltip="A JSON representation of the kapps categories">&lt;%=JSON.parse(@results['API']['Response Body'])['kapp']['categories'].to_json%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Display Type" label="Display Type" menu="" required="false" tooltip="The Display Type of the kapp">&lt;%=JSON.parse(@results['API']['Response Body'])['kapp']['displayType']%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Display Value" label="Display Value" menu="" required="false" tooltip="The Display Value of the kapp">&lt;%=JSON.parse(@results['API']['Response Body'])['kapp']['displayValue']%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Exists" label="Exists" menu="" required="false" tooltip="If the kapp exists">true</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Security Policies JSON" label="Security Policies JSON" menu="" required="false" tooltip="A JSON representation of the kapps security policies">&lt;%=JSON.parse(@results['API']['Response Body'])['kapp']['securityPolicies'].to_json%&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents></dependents>
+            </task>
+            <task definition_id="system_tree_return_v1" id="system_tree_return_v1_6" name="Return - Does Not Exist" x="660" y="34">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Name" label="Name" menu="" required="false" tooltip="The name of the kapp"></parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Slug" label="Slug" menu="" required="false" tooltip="The slug of the kapp"></parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="After Logout Path" label="After Logout Path" menu="" required="false" tooltip="The path in which users will be routed upon logout"></parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Attributes Map JSON" label="Attributes Map JSON" menu="" required="false" tooltip="A JSON representation of the kapps attributes"></parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Bundle Path" label="Bundle Path" menu="" required="false" tooltip="The bundle path configured for the kapp"></parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Categories JSON" label="Categories JSON" menu="" required="false" tooltip="A JSON representation of the kapps categories"></parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Display Type" label="Display Type" menu="" required="false" tooltip="The Display Type of the kapp"></parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Display Value" label="Display Value" menu="" required="false" tooltip="The Display Value of the kapp"></parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Exists" label="Exists" menu="" required="false" tooltip="If the kapp exists">false</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Security Policies JSON" label="Security Policies JSON" menu="" required="false" tooltip="A JSON representation of the kapps security policies"></parameter>
+                </parameters>
+                <messages></messages>
+                <dependents></dependents>
+            </task>
+        </request>
+    </taskTree>
+</tree>

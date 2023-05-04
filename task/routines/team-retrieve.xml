@@ -1,0 +1,95 @@
+<tree schema_version="1.0">
+    <sourceName>-</sourceName>
+    <sourceGroup>-</sourceGroup>
+    <definitionId>routine_kinetic_team_retrieve_v1</definitionId>
+    <type>Global Routine</type>
+    <status>Active</status>
+    <taskTree builder_version="" schema_version="1.0" version="">
+        <name>Team Retrieve</name>
+        <author></author>
+        <notes></notes>
+        <lastID>6</lastID>
+        <taskDefinition id="routine_kinetic_team_retrieve_v1" name="Team Retrieve" schema_version="1.0" version="1">
+            <visible>false</visible>
+            <deferrable>true</deferrable>
+            <parameters>
+                <parameter id="Name" label="Name" required="true" tooltip="The Teams name"></parameter>
+            </parameters>
+            <handler name="system_tree_call" version="1"></handler>
+            <results format="xml">
+                <result name="Name" tooltip="The Teams name"></result>
+                <result name="Description" tooltip="The teams description"></result>
+                <result name="Attributes Map JSON" tooltip="A JSON representation of the teams attributes"></result>
+                <result name="Exists" tooltip="If the team exists in the system"></result>
+                <result name="Memberships JSON" tooltip="A JSON representation of the teams memberships"></result>
+                <result name="Slug" tooltip="The internal system slug of the team"></result>
+            </results>
+        </taskDefinition>
+        <request>
+            <task definition_id="system_start_v1" id="start" name="Start" x="41" y="71">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters></parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">kinetic_core_api_v1_1</task>
+                </dependents>
+            </task>
+            <task definition_id="kinetic_core_api_v1" id="kinetic_core_api_v1_1" name="API" x="269" y="77">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="error_handling" label="Error Handling" menu="Error Message,Raise Error" required="true" tooltip="Determine what to return if an error is encountered.">Raise Error</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="method" label="Method" menu="GET,POST,PUT,PATCH,DELETE" required="true" tooltip="GET,POST,PUT,PATCH,DELETE (Defaults to GET)">GET</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="path" label="Path" menu="" required="true" tooltip="Example: /kapps/:kappSlug/forms/:formSlug">/teams/&lt;%=Digest::MD5.hexdigest @inputs['Name']%&gt;?include=details,memberships,attributesMap</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="body" label="Body" menu="" required="false" tooltip="JSON body if applicable (POST,PUT,PATCH)"></parameter>
+                </parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="No Error" type="Complete" value="@results['API']['Handler Error Message'].to_s.empty?">system_tree_return_v1_2</task>
+                    <task label="Has 404 Error" type="Complete" value="!@results['API']['Handler Error Message'].to_s.empty? &amp;&amp; @results['API']['Response Code'].to_i == 404">system_tree_return_v1_6</task>
+                </dependents>
+            </task>
+            <task definition_id="system_tree_return_v1" id="system_tree_return_v1_2" name="Return Results" x="721" y="206">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Name" label="Name" menu="" required="false" tooltip="The Teams name">&lt;%=JSON.parse(@results['API']['Response Body'])['team']['name']%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Description" label="Description" menu="" required="false" tooltip="The teams description">&lt;%=JSON.parse(@results['API']['Response Body'])['team']['description']%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Attributes Map JSON" label="Attributes Map JSON" menu="" required="false" tooltip="A JSON representation of the teams attributes">&lt;%=JSON.parse(@results['API']['Response Body'])['team']['attributesMap'].to_json%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Exists" label="Exists" menu="" required="false" tooltip="If the team exists in the system">true</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Memberships JSON" label="Memberships JSON" menu="" required="false" tooltip="A JSON representation of the teams memberships">&lt;%=JSON.parse(@results['API']['Response Body'])['team']['memberships'].to_json%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Slug" label="Slug" menu="" required="false" tooltip="The internal system slug of the team">&lt;%=Digest::MD5.hexdigest JSON.parse(@results['API']['Response Body'])['team']['name']%&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents></dependents>
+            </task>
+            <task definition_id="system_tree_return_v1" id="system_tree_return_v1_6" name="Return - Does Not Exist" x="732" y="29">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Name" label="Name" menu="" required="false" tooltip="The Teams name"></parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Description" label="Description" menu="" required="false" tooltip="The teams description"></parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Attributes Map JSON" label="Attributes Map JSON" menu="" required="false" tooltip="A JSON representation of the teams attributes"></parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Exists" label="Exists" menu="" required="false" tooltip="If the team exists in the system">false</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Memberships JSON" label="Memberships JSON" menu="" required="false" tooltip="A JSON representation of the teams memberships"></parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Slug" label="Slug" menu="" required="false" tooltip="The internal system slug of the team"></parameter>
+                </parameters>
+                <messages></messages>
+                <dependents></dependents>
+            </task>
+        </request>
+    </taskTree>
+</tree>

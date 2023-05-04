@@ -1,0 +1,12 @@
+[
+  {
+    "allowsMultiple": false,
+    "description": "Font Awesome Icon Class",
+    "name": "Icon"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "Order in which this category should appear",
+    "name": "Sort Order"
+  }
+]

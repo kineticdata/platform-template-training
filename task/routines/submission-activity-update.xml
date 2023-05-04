@@ -1,0 +1,76 @@
+<tree schema_version="1.0">
+    <sourceName>-</sourceName>
+    <sourceGroup>-</sourceGroup>
+    <definitionId>routine_kinetic_submission_activity_update_v1</definitionId>
+    <type>Global Routine</type>
+    <status>Active</status>
+    <taskTree builder_version="" schema_version="1.0" version="">
+        <name>Submission Activity Update</name>
+        <author></author>
+        <notes></notes>
+        <lastID>5</lastID>
+        <taskDefinition id="routine_kinetic_submission_activity_update_v1" name="Submission Activity Update" schema_version="1.0" version="1">
+            <visible>false</visible>
+            <deferrable>true</deferrable>
+            <parameters>
+                <parameter id="Submission Id" label="Submission Id" required="true" tooltip="The Id of the submission in which the activity is related"></parameter>
+                <parameter id="Activity Id" label="Activity Id" required="true" tooltip="The Id of the submission activity"></parameter>
+                <parameter id="Updated - Data" label="Updated - Data" required="false" tooltip="Data to store in the submission activity"></parameter>
+                <parameter id="Updated - Description" label="Updated - Description" required="false" tooltip="Description of the submission activity"></parameter>
+                <parameter id="Updated - Label" label="Updated - Label" required="false" tooltip="Label for the submission activity"></parameter>
+                <parameter id="Updated - Type" label="Updated - Type" required="false" tooltip="Type of submission activity"></parameter>
+            </parameters>
+            <handler name="system_tree_call" version="1"></handler>
+            <results format="xml"></results>
+        </taskDefinition>
+        <request>
+            <task definition_id="system_start_v1" id="start" name="Start" x="41" y="71">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters></parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">kinetic_core_api_v1_1</task>
+                </dependents>
+            </task>
+            <task definition_id="kinetic_core_api_v1" id="kinetic_core_api_v1_1" name="API" x="269" y="77">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="error_handling" label="Error Handling" menu="Error Message,Raise Error" required="true" tooltip="Determine what to return if an error is encountered.">Raise Error</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="method" label="Method" menu="GET,POST,PUT,PATCH,DELETE" required="true" tooltip="GET,POST,PUT,PATCH,DELETE (Defaults to GET)">PUT</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="path" label="Path" menu="" required="true" tooltip="Example: /kapps/:kappSlug/forms/:formSlug">/submissions/&lt;%=@inputs['Submission Id']%&gt;/activities/&lt;%=@inputs['Activity Id']%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="body" label="Body" menu="" required="false" tooltip="JSON body if applicable (POST,PUT,PATCH)">&lt;%= 
+ data = {} 
+ data.tap do |json| 
+ 	 json['data'] = @inputs['Updated - Data'] if !@inputs['Updated - Data'].to_s.empty? 
+ 	 json['description'] = @inputs['Updated - Description'] if !@inputs['Updated - Description'].to_s.empty? 
+ 	 json['label'] = @inputs['Updated - Label'] if !@inputs['Updated - Label'].to_s.empty? 
+ 	 json['type'] = @inputs['Updated - Type'] if !@inputs['Updated - Type'].to_s.empty? 
+ end 
+ data.to_json%&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">system_tree_return_v1_2</task>
+                </dependents>
+            </task>
+            <task definition_id="system_tree_return_v1" id="system_tree_return_v1_2" name="Return Results" x="731" y="79">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters></parameters>
+                <messages></messages>
+                <dependents></dependents>
+            </task>
+        </request>
+    </taskTree>
+</tree>

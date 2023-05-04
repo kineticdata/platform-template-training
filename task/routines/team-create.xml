@@ -1,0 +1,74 @@
+<tree schema_version="1.0">
+    <sourceName>-</sourceName>
+    <sourceGroup>-</sourceGroup>
+    <definitionId>routine_kinetic_team_create_v1</definitionId>
+    <type>Global Routine</type>
+    <status>Active</status>
+    <taskTree builder_version="" schema_version="1.0" version="">
+        <name>Team Create</name>
+        <author></author>
+        <notes></notes>
+        <lastID>5</lastID>
+        <taskDefinition id="routine_kinetic_team_create_v1" name="Team Create" schema_version="1.0" version="1">
+            <visible>false</visible>
+            <deferrable>true</deferrable>
+            <parameters>
+                <parameter id="Name" label="Name" required="true" tooltip="The teams name"></parameter>
+                <parameter id="Description" label="Description" required="false" tooltip="The teams description"></parameter>
+                <parameter id="Attributes Map JSON" label="Attributes Map JSON" required="false" tooltip="JSON representation of the attributes associated to the team"></parameter>
+                <parameter id="Memberships List JSON" label="Memberships List JSON" required="false" tooltip="A JSON array of usernames to be added as team members (ie. ['john.doe', 'jane.doe'])"></parameter>
+            </parameters>
+            <handler name="system_tree_call" version="1"></handler>
+            <results format="xml"></results>
+        </taskDefinition>
+        <request>
+            <task definition_id="system_start_v1" id="start" name="Start" x="41" y="71">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters></parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">kinetic_core_api_v1_1</task>
+                </dependents>
+            </task>
+            <task definition_id="kinetic_core_api_v1" id="kinetic_core_api_v1_1" name="API" x="269" y="77">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="error_handling" label="Error Handling" menu="Error Message,Raise Error" required="true" tooltip="Determine what to return if an error is encountered.">Raise Error</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="method" label="Method" menu="GET,POST,PUT,PATCH,DELETE" required="true" tooltip="GET,POST,PUT,PATCH,DELETE (Defaults to GET)">POST</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="path" label="Path" menu="" required="true" tooltip="Example: /kapps/:kappSlug/forms/:formSlug">/teams</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="body" label="Body" menu="" required="false" tooltip="JSON body if applicable (POST,PUT,PATCH)">&lt;%= 
+ data = {} 
+ data.tap do |json| 
+ 	 json['name'] = @inputs['Name'] if !@inputs['Name'].to_s.empty? 
+ 	 json['description'] = @inputs['Description'] if !@inputs['Description'].to_s.empty? 
+ 	 json['attributesMap'] = JSON.parse(@inputs['Attributes Map JSON'] || '{}') if !JSON.parse(@inputs['Attributes Map JSON'] || '{}').empty? 
+ 	 json['memberships'] = JSON.parse(@inputs['Memberships List JSON'] || '[]').map {|username| {'user' =&gt; {'username' =&gt; username}}} if !JSON.parse(@inputs['Memberships List JSON'] || '[]').map {|username| {'user' =&gt; {'username' =&gt; username}}}.empty? 
+ end 
+ data.to_json%&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">system_tree_return_v1_2</task>
+                </dependents>
+            </task>
+            <task definition_id="system_tree_return_v1" id="system_tree_return_v1_2" name="Return Results" x="680" y="87">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters></parameters>
+                <messages></messages>
+                <dependents></dependents>
+            </task>
+        </request>
+    </taskTree>
+</tree>

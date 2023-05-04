@@ -1,0 +1,107 @@
+{
+  "afterLogoutPath": "",
+  "allowedIps": [
+
+  ],
+  "allowedIpsEnabled": false,
+  "attributes": [
+    {
+      "name": "Shared Workflow Engine",
+      "values": [
+        "False"
+      ]
+    },
+    {
+      "name": "Task Server Host",
+      "values": [
+        "training.kinops.io"
+      ]
+    },
+    {
+      "name": "Task Server Scheme",
+      "values": [
+        "https"
+      ]
+    },
+    {
+      "name": "Task Server Space Slug",
+      "values": [
+        "training"
+      ]
+    },
+    {
+      "name": "Task Server Url",
+      "values": [
+        "https://training.kinops.io/kinetic-task"
+      ]
+    },
+    {
+      "name": "Web Server Url",
+      "values": [
+        "https://training.kinops.io"
+      ]
+    }
+  ],
+  "bundlePath": "",
+  "customTranslationContexts": [
+
+  ],
+  "defaultLocale": "en",
+  "defaultTimezone": "America/Chicago",
+  "displayType": "Single Page App",
+  "displayValue": "https://s3.amazonaws.com/kinops.io/bundles/kinetic-starter-app/branches/main/index.html",
+  "enabledLocales": [
+    "en"
+  ],
+  "loginPage": null,
+  "name": "Training Template",
+  "platformComponents": {
+    "agents": [
+
+    ]
+  },
+  "resetPasswordPage": null,
+  "securityPolicies": [
+    {
+      "endpoint": "Display",
+      "name": "Authenticated Users"
+    },
+    {
+      "endpoint": "Teams Access",
+      "name": "Authenticated Users"
+    },
+    {
+      "endpoint": "Team Creation",
+      "name": "Admins"
+    },
+    {
+      "endpoint": "Team Membership Modification",
+      "name": "Admins"
+    },
+    {
+      "endpoint": "Team Modification",
+      "name": "Admins"
+    },
+    {
+      "endpoint": "Users Access",
+      "name": "Authenticated Users"
+    },
+    {
+      "endpoint": "User Creation",
+      "name": "Admins"
+    },
+    {
+      "endpoint": "User Modification",
+      "name": "Admins"
+    }
+  ],
+  "sessionInactiveLimitInSeconds": 2592000,
+  "sharedBundleBase": "hydrogen-v1",
+  "slug": "training",
+  "trustedFrameDomains": [
+
+  ],
+  "trustedResourceDomains": [
+
+  ]
+}

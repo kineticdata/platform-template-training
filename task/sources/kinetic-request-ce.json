@@ -1,0 +1,13 @@
+{
+  "name": "Kinetic Request CE",
+  "status": "Active",
+  "type": "Kinetic Request CE",
+  "policyRules": [
+
+  ],
+  "properties": {
+    "Proxy Username": "space-integration-user",
+    "Web Server": "https://training.kinops.io",
+    "Space Slug": ""
+  }
+}

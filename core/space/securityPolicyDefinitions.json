@@ -1,0 +1,20 @@
+[
+  {
+    "message": "Must be an administrator.",
+    "name": "Admins",
+    "rule": "/* \n * Space admins are allowed access regardless of the the result of security \n * policies.  Returning 'false' denies anyone but a space access. \n */\nfalse",
+    "type": "Space"
+  },
+  {
+    "message": "Must be authenticated.",
+    "name": "Authenticated Users",
+    "rule": "identity('authenticated')",
+    "type": "Space"
+  },
+  {
+    "message": "Everyone is allowed access.",
+    "name": "Everyone",
+    "rule": "true",
+    "type": "Space"
+  }
+]
