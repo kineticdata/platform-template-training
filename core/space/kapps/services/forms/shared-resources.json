@@ -5,7 +5,7 @@
   ],
   "bridgedResources": [
     {
-      "model": "Person",
+      "model": "Users",
       "name": "Person - By Email",
       "order": [
 
@@ -20,7 +20,7 @@
       "status": "Active"
     },
     {
-      "model": "Person",
+      "model": "Users",
       "name": "Person - By Username",
       "order": [
 

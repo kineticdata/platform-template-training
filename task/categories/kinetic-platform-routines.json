@@ -24,7 +24,6 @@
     "routine_kinetic_submission_activity_delete_v1",
     "routine_kinetic_submission_activity_retrieve_v1",
     "routine_kinetic_submission_activity_update_v1",
-    "routine_kinetic_submission_create_v1",
     "routine_kinetic_submission_delete_v1",
     "routine_kinetic_submission_retrieve_v1",
     "routine_kinetic_submission_update_status_v1",

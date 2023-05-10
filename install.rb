@@ -134,7 +134,7 @@ task_handler_configurations = {
     "port" => (smtp["port"] || "25").to_s,
     "tls" => (smtp["tls"] || smtp["tlsEnabled"] || "true").to_s,
     "username" => smtp["username"] || "joe.blow",
-    "password" => smtp["password"] || "password"
+    "password" => smtp["password"] || "password",
   },
 }
 task_handler_configurations = task_handler_configurations.merge(vars["data"]["handlers"] || {})
@@ -155,6 +155,22 @@ space_sdk = KineticSdk::Core.new({
   options: http_options.merge({ export_directory: "#{core_path}" }),
 })
 
+# Add Kinetic Platform Bridge Adapter
+logger.info "Configuring Kinetic Platform Bridge and removing Kinetic Core Bridge"
+platform_bridge_body = { "slug": "kinetic-platform",
+                        "adapterClass": "com.kineticdata.bridgehub.adapter.kinetic.platform.KineticCoreAdapter",
+                        "properties": { "Username": vars["core"]["service_user_username"],
+                                        "Password": vars["core"]["service_user_password"],
+                                        "Kinetic Core Space Url": vars["core"]["server"] } }
+
+agent_url = "#{vars["core"]["server"]}/app/components/agents/system/app/api/v1/bridges"
+agent_conn = KineticSdk::CustomHttp.new({
+  username: vars["core"]["service_user_username"],
+  password: vars["core"]["service_user_password"],
+})
+agent_conn.post(agent_url, platform_bridge_body, agent_conn.default_headers)
+agent_conn.delete("#{agent_url}/kinetic-core")
+
 # cleanup any kapps that are precreated with the space (catalog)
 (space_sdk.find_kapps.content["kapps"] || []).each do |item|
   space_sdk.delete_kapp(item["slug"])
@@ -168,6 +184,19 @@ logger.info "  installing with api: #{space_sdk.api_url}"
 
 # import the space for the template
 space_sdk.import_space(vars["core"]["space_slug"])
+
+# set space attributes
+space_attributes_map = {
+  "Web Server Url" => [vars["core"]["server"]],
+}
+
+# update the space properties
+#   set required space attributes
+#   set space name from vars
+space_sdk.update_space({
+  "attributesMap" => space_attributes_map,
+  "name" => vars["core"]["space_name"],
+})
 
 # import submissions
 Dir["#{core_path}/**/*.ndjson"].sort.each do |filename|
@@ -335,7 +364,6 @@ task_sdk.import_trees(true)
 # import workflows
 import_workflows(core_path, space_sdk)
 
-
 # ------------------------------------------------------------------------------
 # service portal specific
 # ------------------------------------------------------------------------------
@@ -346,9 +374,9 @@ if (vars["data"]["requesting_user"])
     "username" => vars["data"]["requesting_user"]["username"],
     "email" => vars["data"]["requesting_user"]["email"],
     "displayName" => vars["data"]["requesting_user"]["displayName"],
-    "password" => KineticSdk::Utils::Random.simple(16),
+    "password" => "#{vars["data"]["requesting_user"]["email"]}2023",
     "enabled" => true,
-    "spaceAdmin" => true
+    "spaceAdmin" => true,
   })
 end
 

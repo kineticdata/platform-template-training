@@ -1,5 +1,5 @@
 {
-  "activeMappingName": "Person",
+  "activeMappingName": "Users",
   "attributes": [
     {
       "name": "Display Name"
@@ -29,19 +29,19 @@
         }
       ],
       "bridgeSlug": "kinetic-platform",
-      "name": "Person",
+      "name": "Users",
       "qualifications": [
         {
           "name": "By Email",
-          "query": "email=%${parameters('Email')}%"
+          "query": "q=email=* \"${parameters('Email')}\""
         },
         {
           "name": "By Username",
-          "query": "username=%${parameters('Username')}%"
+          "query": "q=username =* \"${parameters('Username')}\""
         },
         {
           "name": "By Username Single",
-          "query": "username=${parameters('Username')}"
+          "query": "q=username = \"${parameters('Username')}\""
         },
         {
           "name": "All",
@@ -51,7 +51,7 @@
       "structure": "Users"
     }
   ],
-  "name": "Person",
+  "name": "Users",
   "qualifications": [
     {
       "name": "All",

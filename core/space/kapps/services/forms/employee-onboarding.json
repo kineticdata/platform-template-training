@@ -311,6 +311,7 @@
 
               ],
               "renderAttributes": {
+                "class": "col-md-6"
               },
               "dataType": "string",
               "renderType": "text",

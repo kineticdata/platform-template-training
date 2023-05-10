@@ -38,7 +38,7 @@
     {
       "name": "Web Server Url",
       "values": [
-        "https://training.kinops.io"
+        "https://training-3.kinops.io"
       ]
     }
   ],
@@ -49,7 +49,7 @@
   "defaultLocale": "en",
   "defaultTimezone": "America/Chicago",
   "displayType": "Single Page App",
-  "displayValue": "https://s3.amazonaws.com/kinops.io/bundles/kinetic-starter-app/branches/main/index.html",
+  "displayValue": "https://s3.amazonaws.com/kinops.io/bundles/kinetic-starter-app/branches/training/index.html",
   "enabledLocales": [
     "en"
   ],
@@ -97,7 +97,7 @@
   ],
   "sessionInactiveLimitInSeconds": 2592000,
   "sharedBundleBase": "hydrogen-v1",
-  "slug": "training",
+  "slug": "training-3",
   "trustedFrameDomains": [
 
   ],

@@ -1,0 +1,131 @@
+{
+  "anonymous": false,
+  "attributes": [
+
+  ],
+  "bridgedResources": [
+
+  ],
+  "categorizations": [
+
+  ],
+  "customHeadContent": null,
+  "description": "",
+  "indexDefinitions": [
+    {
+      "name": "closedBy",
+      "parts": [
+        "closedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "createdBy",
+      "parts": [
+        "createdBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "handle",
+      "parts": [
+        "handle"
+      ],
+      "unique": false
+    },
+    {
+      "name": "submittedBy",
+      "parts": [
+        "submittedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "updatedBy",
+      "parts": [
+        "updatedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Markdown Field]",
+      "parts": [
+        "values[Markdown Field]"
+      ],
+      "unique": false
+    }
+  ],
+  "name": "Markdown Content",
+  "notes": null,
+  "pages": [
+    {
+      "advanceCondition": null,
+      "displayCondition": null,
+      "displayPage": null,
+      "elements": [
+        {
+          "type": "content",
+          "renderType": "html",
+          "name": "Markdown Widget",
+          "text": null,
+          "visible": true,
+          "renderAttributes": {
+          }
+        },
+        {
+          "type": "field",
+          "name": "Markdown Field",
+          "label": "Markdown Field",
+          "key": "f1",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": false,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 5
+        },
+        {
+          "visible": true,
+          "renderAttributes": {
+          },
+          "name": "Submit Button",
+          "label": "Submit",
+          "type": "button",
+          "renderType": "submit-page",
+          "enabled": true
+        }
+      ],
+      "events": [
+        {
+          "name": "Load Markdown Widget",
+          "type": "Load",
+          "action": "Custom",
+          "code": "// Load Markdown Widget that is defined in the react bundle, passing in the markdown form element, and the field the markdown should be stored in.\n\nbundle.helpers.Markdown(\n  K('content[Markdown Widget]').element(),\n  K('field[Markdown Field]'),\n  {}\n);"
+        }
+      ],
+      "name": "Page 1",
+      "renderType": "submittable",
+      "type": "page"
+    }
+  ],
+  "securityPolicies": [
+
+  ],
+  "slug": "markdown-content",
+  "status": "Active",
+  "submissionLabelExpression": "",
+  "type": "Content"
+}

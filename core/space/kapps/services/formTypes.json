@@ -1,5 +1,11 @@
 [
   {
+    "name": "Content"
+  },
+  {
+    "name": "Datastore"
+  },
+  {
     "name": "Service"
   },
   {
