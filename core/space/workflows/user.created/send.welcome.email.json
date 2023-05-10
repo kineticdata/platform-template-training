@@ -37,8 +37,8 @@
       },
       "id": "start",
       "position": {
-        "x": 10,
-        "y": 10
+        "x": 61,
+        "y": 71
       },
       "version": 1,
       "parameters": [
@@ -120,7 +120,7 @@
           "id": "htmlbody",
           "label": "HTML Body",
           "menu": "",
-          "value": "Hi <%=  @user['Display Name'] %>, <br/><br/>\n\nHere's a link to your training environment. <br/><br/>\n\nEnd User Portal: <%=  @space_attributes['Web Server Url'] %> <br/>\nAdmin Portal: <%=  @space_attributes['Web Server Url'] %>/app <br/><br/>\n\nYour username is: <%=  @user['Email'] %> <br/>\nYour password is: <%=  @user['Email'] %>2023 <br/><br/>\n\nHappy Learning!\n\nKinetic Data",
+          "value": "Hi <%=  @user['Display Name'] %>, <br/><br/>\n\nWe're excited to get you up to speed on the Kinetic Platform. Here's a link to your environment for use during the training. <br/><br/>\n\nEnd User Portal: <%=  @space_attributes['Web Server Url'] %> <br/>\nAdmin Portal: <%=  @space_attributes['Web Server Url'] %>/app <br/><br/>\n\nYour username is: <%=  @user['Email'] %> <br/>\nYour password is: <%=  @user['Email'] %>2023 <br/><br/>\n\nWe'll keep this environment around for 2 weeks after the training event. If you'd like to have it for longer, just let us know! <br/><br/>\n\nHappy Learning! <br/><br/>\n\nKinetic Data",
           "required": false
         },
         {

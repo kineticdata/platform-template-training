@@ -38,7 +38,7 @@
     {
       "name": "Web Server Url",
       "values": [
-        "https://training-3.kinops.io"
+        "https://training.kinops.io"
       ]
     }
   ],
@@ -97,7 +97,7 @@
   ],
   "sessionInactiveLimitInSeconds": 2592000,
   "sharedBundleBase": "hydrogen-v1",
-  "slug": "training-3",
+  "slug": "training",
   "trustedFrameDomains": [
 
   ],
