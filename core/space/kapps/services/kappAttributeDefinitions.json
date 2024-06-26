@@ -1,0 +1,12 @@
+[
+  {
+    "allowsMultiple": false,
+    "description": "Add an icon to the kapp card.",
+    "name": "Icon"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "",
+    "name": "Show Kapp Landing"
+  }
+]

@@ -1,0 +1,150 @@
+{
+  "activeMappingName": "Issue Submissions",
+  "attributes": [
+    {
+      "name": "Attachments"
+    },
+    {
+      "name": "Category"
+    },
+    {
+      "name": "Environment"
+    },
+    {
+      "name": "Id"
+    },
+    {
+      "name": "Internal Priority"
+    },
+    {
+      "name": "Issue Summary"
+    },
+    {
+      "name": "Observing Individuals"
+    },
+    {
+      "name": "Observing Teams"
+    },
+    {
+      "name": "Requested By"
+    },
+    {
+      "name": "Requested By Display Name"
+    },
+    {
+      "name": "Requested For"
+    },
+    {
+      "name": "Requested For Display Name"
+    },
+    {
+      "name": "Severity"
+    },
+    {
+      "name": "Status"
+    },
+    {
+      "name": "Subject"
+    }
+  ],
+  "mappings": [
+    {
+      "agentSlug": "system",
+      "attributes": [
+        {
+          "name": "Category",
+          "structureField": "${fields('values[Category]')}"
+        },
+        {
+          "name": "Environment",
+          "structureField": "${fields('values[Environment]')}"
+        },
+        {
+          "name": "Issue Summary",
+          "structureField": "${fields('values[Issue Summary]')}"
+        },
+        {
+          "name": "Requested For",
+          "structureField": "${fields('values[Requested For]')}"
+        },
+        {
+          "name": "Requested For Display Name",
+          "structureField": "${fields('values[Requested For Display Name]')}"
+        },
+        {
+          "name": "Severity",
+          "structureField": "${fields('values[Severity]')}"
+        },
+        {
+          "name": "Subject",
+          "structureField": "${fields('values[Subject]')}"
+        },
+        {
+          "name": "Attachments",
+          "structureField": "${fields(\"values[Attachments]\")}"
+        },
+        {
+          "name": "Requested By",
+          "structureField": "${fields(\"values[Requested By]\")}"
+        },
+        {
+          "name": "Requested By Display Name",
+          "structureField": "${fields(\"values[Requested By Display Name]\")}"
+        },
+        {
+          "name": "Observing Teams",
+          "structureField": "${fields(\"values[Observing Teams]\")}"
+        },
+        {
+          "name": "Observing Individuals",
+          "structureField": "${fields(\"values[Observing Individuals]\")}"
+        },
+        {
+          "name": "Status",
+          "structureField": "${fields(\"values[Status]\")}"
+        },
+        {
+          "name": "Internal Priority",
+          "structureField": "${fields(\"values[Internal Priority]\")}"
+        },
+        {
+          "name": "Id",
+          "structureField": "${fields(\"label\")}"
+        }
+      ],
+      "bridgeSlug": "kinetic-platform",
+      "name": "Issue Submissions",
+      "qualifications": [
+        {
+          "name": "All",
+          "query": ""
+        },
+        {
+          "name": "By User",
+          "query": "q=values[Requested For] = \"${parameters(\"Requested For\")}\""
+        }
+      ],
+      "structure": "Submissions > customer-portal > report-an-issue"
+    }
+  ],
+  "name": "Issue Submissions",
+  "qualifications": [
+    {
+      "name": "All",
+      "parameters": [
+
+      ],
+      "resultType": "Multiple"
+    },
+    {
+      "name": "By User",
+      "parameters": [
+        {
+          "name": "Requested For"
+        }
+      ],
+      "resultType": "Multiple"
+    }
+  ],
+  "status": "Active"
+}

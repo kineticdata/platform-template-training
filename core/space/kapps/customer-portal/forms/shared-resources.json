@@ -1,0 +1,286 @@
+{
+  "anonymous": false,
+  "attributes": [
+
+  ],
+  "bridgedResources": [
+    {
+      "model": "Users",
+      "name": "Person - By Email",
+      "order": [
+
+      ],
+      "parameters": [
+        {
+          "mapping": "${values('Email')}",
+          "name": "Email"
+        }
+      ],
+      "qualification": "By Email",
+      "status": "Active"
+    },
+    {
+      "model": "Users",
+      "name": "Person - By Username",
+      "order": [
+
+      ],
+      "parameters": [
+        {
+          "mapping": "${values('Username')}",
+          "name": "Username"
+        }
+      ],
+      "qualification": "By Username",
+      "status": "Active"
+    },
+    {
+      "model": "Issue Submissions",
+      "name": "Submissions",
+      "order": [
+
+      ],
+      "parameters": [
+
+      ],
+      "qualification": "All",
+      "status": "Active"
+    }
+  ],
+  "categorizations": [
+
+  ],
+  "customHeadContent": null,
+  "description": "Form that holds fields for bridge searching and other resources that are shared across forms.",
+  "indexDefinitions": [
+    {
+      "name": "closedBy",
+      "parts": [
+        "closedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "createdBy",
+      "parts": [
+        "createdBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "handle",
+      "parts": [
+        "handle"
+      ],
+      "unique": false
+    },
+    {
+      "name": "submittedBy",
+      "parts": [
+        "submittedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "type,coreState,createdBy",
+      "parts": [
+        "type",
+        "coreState",
+        "createdBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "type,coreState,submittedBy",
+      "parts": [
+        "type",
+        "coreState",
+        "submittedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "type,createdBy",
+      "parts": [
+        "type",
+        "createdBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "type,submittedBy",
+      "parts": [
+        "type",
+        "submittedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "updatedBy",
+      "parts": [
+        "updatedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Email]",
+      "parts": [
+        "values[Email]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Observing Individuals]",
+      "parts": [
+        "values[Observing Individuals]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Observing Teams]",
+      "parts": [
+        "values[Observing Teams]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Username]",
+      "parts": [
+        "values[Username]"
+      ],
+      "unique": false
+    }
+  ],
+  "name": "Shared Resources",
+  "notes": null,
+  "pages": [
+    {
+      "advanceCondition": null,
+      "displayCondition": null,
+      "displayPage": null,
+      "elements": [
+        {
+          "enabled": true,
+          "dataType": "string",
+          "requiredMessage": null,
+          "name": "Username",
+          "omitWhenHidden": null,
+          "renderAttributes": {
+          },
+          "renderType": "text",
+          "pattern": null,
+          "defaultValue": "${identity('username')}",
+          "visible": true,
+          "label": "Username",
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "rows": 1,
+          "defaultResourceName": null,
+          "type": "field",
+          "key": "f1",
+          "required": false
+        },
+        {
+          "enabled": true,
+          "dataType": "string",
+          "requiredMessage": null,
+          "name": "Email",
+          "omitWhenHidden": null,
+          "renderAttributes": {
+          },
+          "renderType": "text",
+          "pattern": null,
+          "defaultValue": "${identity('email')}",
+          "visible": true,
+          "label": "Email",
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "rows": 1,
+          "defaultResourceName": null,
+          "type": "field",
+          "key": "f2",
+          "required": false
+        },
+        {
+          "enabled": true,
+          "dataType": "json",
+          "requiredMessage": null,
+          "name": "Observing Teams",
+          "choicesResourceName": null,
+          "omitWhenHidden": null,
+          "renderAttributes": {
+          },
+          "renderType": "checkbox",
+          "pattern": null,
+          "defaultValue": null,
+          "visible": true,
+          "choices": [
+
+          ],
+          "label": "Observing Teams",
+          "choicesRunIf": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "defaultResourceName": null,
+          "type": "field",
+          "key": "f904",
+          "required": false
+        },
+        {
+          "enabled": true,
+          "dataType": "json",
+          "requiredMessage": null,
+          "name": "Observing Individuals",
+          "choicesResourceName": null,
+          "omitWhenHidden": null,
+          "renderAttributes": {
+          },
+          "renderType": "checkbox",
+          "pattern": null,
+          "defaultValue": null,
+          "visible": true,
+          "choices": [
+
+          ],
+          "label": "Observing Individuals",
+          "choicesRunIf": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "defaultResourceName": null,
+          "type": "field",
+          "key": "f905",
+          "required": false
+        }
+      ],
+      "events": [
+
+      ],
+      "name": "Shared Resources",
+      "renderType": "submittable",
+      "type": "page"
+    }
+  ],
+  "securityPolicies": [
+
+  ],
+  "slug": "shared-resources",
+  "status": "Active",
+  "submissionLabelExpression": null,
+  "type": "Utility"
+}

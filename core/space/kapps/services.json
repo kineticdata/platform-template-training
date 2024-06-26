@@ -1,7 +1,12 @@
 {
   "afterLogoutPath": null,
   "attributes": [
-
+    {
+      "name": "Icon",
+      "values": [
+        "la-atom"
+      ]
+    }
   ],
   "bundlePath": "webpack",
   "defaultFormConfirmationPage": "space.jsp",

@@ -1,0 +1,649 @@
+{
+  "anonymous": false,
+  "attributes": [
+
+  ],
+  "bridgedResources": [
+
+  ],
+  "categorizations": [
+
+  ],
+  "customHeadContent": null,
+  "description": "Use this form to report a bug or other issue with your environment.",
+  "indexDefinitions": [
+    {
+      "name": "closedBy",
+      "parts": [
+        "closedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "createdBy",
+      "parts": [
+        "createdBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "handle",
+      "parts": [
+        "handle"
+      ],
+      "unique": false
+    },
+    {
+      "name": "submittedBy",
+      "parts": [
+        "submittedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "updatedBy",
+      "parts": [
+        "updatedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Category]",
+      "parts": [
+        "values[Category]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Environment]",
+      "parts": [
+        "values[Environment]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Internal Priority]",
+      "parts": [
+        "values[Internal Priority]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Issue Summary]",
+      "parts": [
+        "values[Issue Summary]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Observing Individuals]",
+      "parts": [
+        "values[Observing Individuals]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Observing Teams]",
+      "parts": [
+        "values[Observing Teams]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Requested By Display Name]",
+      "parts": [
+        "values[Requested By Display Name]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Requested By]",
+      "parts": [
+        "values[Requested By]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Requested For Display Name]",
+      "parts": [
+        "values[Requested For Display Name]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Requested For]",
+      "parts": [
+        "values[Requested For]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Severity]",
+      "parts": [
+        "values[Severity]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Status]",
+      "parts": [
+        "values[Status]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Subject]",
+      "parts": [
+        "values[Subject]"
+      ],
+      "unique": false
+    }
+  ],
+  "name": "Report an Issue",
+  "notes": null,
+  "pages": [
+    {
+      "advanceCondition": null,
+      "displayCondition": null,
+      "displayPage": null,
+      "elements": [
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Issue Reporting Fields",
+          "title": null,
+          "visible": true,
+          "omitWhenHidden": null,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "enabled": true,
+              "dataType": "string",
+              "requiredMessage": null,
+              "name": "Subject",
+              "omitWhenHidden": null,
+              "renderAttributes": {
+              },
+              "renderType": "text",
+              "pattern": null,
+              "defaultValue": null,
+              "visible": true,
+              "label": "Subject",
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "rows": 1,
+              "defaultResourceName": null,
+              "type": "field",
+              "key": "5e70f4ac98ea4fc79da191f38a930dd3",
+              "required": true
+            },
+            {
+              "enabled": true,
+              "dataType": "string",
+              "requiredMessage": null,
+              "name": "Issue Summary",
+              "omitWhenHidden": null,
+              "renderAttributes": {
+              },
+              "renderType": "text",
+              "pattern": null,
+              "defaultValue": null,
+              "visible": true,
+              "label": "Please describe the issue you're having. If applicable, provide the steps needed to recreate the issue.",
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "rows": 1,
+              "defaultResourceName": null,
+              "type": "field",
+              "key": "227dc52562b44909b9ad03ebab3fd10e",
+              "required": true
+            },
+            {
+              "enabled": true,
+              "dataType": "file",
+              "requiredMessage": null,
+              "name": "Attachments",
+              "omitWhenHidden": null,
+              "renderAttributes": {
+              },
+              "renderType": "attachment",
+              "pattern": null,
+              "defaultValue": null,
+              "visible": true,
+              "label": "Attach screenshots, logs, or other troubleshooting information here.",
+              "constraints": [
+
+              ],
+              "allowMultiple": true,
+              "events": [
+
+              ],
+              "defaultResourceName": null,
+              "type": "field",
+              "key": "7ad3029a60df4fd8b240bbec499ea6db",
+              "required": false
+            },
+            {
+              "enabled": true,
+              "dataType": "string",
+              "requiredMessage": null,
+              "name": "Category",
+              "choicesResourceName": null,
+              "omitWhenHidden": null,
+              "renderAttributes": {
+              },
+              "renderType": "dropdown",
+              "pattern": null,
+              "defaultValue": null,
+              "visible": true,
+              "choices": [
+                {
+                  "label": "Form",
+                  "value": "Form"
+                },
+                {
+                  "label": "Workflow",
+                  "value": "Workflow"
+                },
+                {
+                  "label": "Integration",
+                  "value": "Integration"
+                },
+                {
+                  "label": "Security",
+                  "value": "Security"
+                }
+              ],
+              "label": "Category",
+              "choicesRunIf": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "defaultResourceName": null,
+              "type": "field",
+              "key": "f8467460150f432a91a3524c0a97aed8",
+              "required": false
+            },
+            {
+              "enabled": true,
+              "dataType": "string",
+              "requiredMessage": null,
+              "name": "Environment",
+              "choicesResourceName": null,
+              "omitWhenHidden": null,
+              "renderAttributes": {
+              },
+              "renderType": "dropdown",
+              "pattern": null,
+              "defaultValue": null,
+              "visible": true,
+              "choices": [
+                {
+                  "label": "All Environments",
+                  "value": "All Environments"
+                },
+                {
+                  "label": "Non-Production",
+                  "value": "Non-Production"
+                },
+                {
+                  "label": "Production",
+                  "value": "Production"
+                }
+              ],
+              "label": "Environment",
+              "choicesRunIf": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "defaultResourceName": null,
+              "type": "field",
+              "key": "8fbd4ad8fe474d578997003eb94c9f9b",
+              "required": false
+            },
+            {
+              "enabled": true,
+              "dataType": "string",
+              "requiredMessage": null,
+              "name": "Severity",
+              "choicesResourceName": null,
+              "omitWhenHidden": null,
+              "renderAttributes": {
+              },
+              "renderType": "dropdown",
+              "pattern": null,
+              "defaultValue": null,
+              "visible": true,
+              "choices": [
+                {
+                  "label": "Critical",
+                  "value": "Critical"
+                },
+                {
+                  "label": "High",
+                  "value": "High"
+                },
+                {
+                  "label": "Medium",
+                  "value": "Medium"
+                },
+                {
+                  "label": "Low",
+                  "value": "Low"
+                }
+              ],
+              "label": "Severity",
+              "choicesRunIf": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "defaultResourceName": null,
+              "type": "field",
+              "key": "7b03bcdd090b4dde8fabe18279b74bf1",
+              "required": false
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Hidden System Questions Do Not Delete",
+          "title": "Hidden System Questions Do Not Delete",
+          "visible": false,
+          "omitWhenHidden": false,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "enabled": true,
+              "dataType": "string",
+              "requiredMessage": null,
+              "name": "Requested For",
+              "omitWhenHidden": null,
+              "renderAttributes": {
+              },
+              "renderType": "text",
+              "pattern": null,
+              "defaultValue": "${identity('username')}",
+              "visible": true,
+              "label": "Requested For",
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "rows": 1,
+              "defaultResourceName": null,
+              "type": "field",
+              "key": "387ae470fc6e4686bc4a766eb8457f0d",
+              "required": false
+            },
+            {
+              "enabled": true,
+              "dataType": "string",
+              "requiredMessage": null,
+              "name": "Requested For Display Name",
+              "omitWhenHidden": null,
+              "renderAttributes": {
+              },
+              "renderType": "text",
+              "pattern": null,
+              "defaultValue": "${identity('displayName')}",
+              "visible": true,
+              "label": "Requested For Display Name",
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "rows": 1,
+              "defaultResourceName": null,
+              "type": "field",
+              "key": "e8da04ef17bf42d5bea2321f397a6a95",
+              "required": false
+            },
+            {
+              "enabled": true,
+              "dataType": "string",
+              "requiredMessage": null,
+              "name": "Requested By",
+              "omitWhenHidden": null,
+              "renderAttributes": {
+              },
+              "renderType": "text",
+              "pattern": null,
+              "defaultValue": "${identity('username')}",
+              "visible": true,
+              "label": "Requested By",
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "rows": 1,
+              "defaultResourceName": null,
+              "type": "field",
+              "key": "8e9924a1e40c45b299e83380adc16a03",
+              "required": false
+            },
+            {
+              "enabled": true,
+              "dataType": "string",
+              "requiredMessage": null,
+              "name": "Requested By Display Name",
+              "omitWhenHidden": null,
+              "renderAttributes": {
+              },
+              "renderType": "text",
+              "pattern": null,
+              "defaultValue": "${identity('displayName')}",
+              "visible": true,
+              "label": "Requested By Display Name",
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "rows": 1,
+              "defaultResourceName": null,
+              "type": "field",
+              "key": "e76b587941aa4e218af57561e7bbfb15",
+              "required": false
+            },
+            {
+              "enabled": true,
+              "dataType": "json",
+              "requiredMessage": null,
+              "name": "Observing Teams",
+              "choicesResourceName": null,
+              "omitWhenHidden": null,
+              "renderAttributes": {
+              },
+              "renderType": "checkbox",
+              "pattern": null,
+              "defaultValue": null,
+              "visible": true,
+              "choices": [
+
+              ],
+              "label": "Observing Teams",
+              "choicesRunIf": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "defaultResourceName": null,
+              "type": "field",
+              "key": "9646d998c2f141f2987345a855564af8",
+              "required": false
+            },
+            {
+              "enabled": true,
+              "dataType": "json",
+              "requiredMessage": null,
+              "name": "Observing Individuals",
+              "choicesResourceName": null,
+              "omitWhenHidden": null,
+              "renderAttributes": {
+              },
+              "renderType": "checkbox",
+              "pattern": null,
+              "defaultValue": null,
+              "visible": true,
+              "choices": [
+
+              ],
+              "label": "Observing Individuals",
+              "choicesRunIf": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "defaultResourceName": null,
+              "type": "field",
+              "key": "f06446012d854853a5503deee6aa3323",
+              "required": false
+            },
+            {
+              "enabled": true,
+              "dataType": "string",
+              "requiredMessage": null,
+              "name": "Status",
+              "omitWhenHidden": null,
+              "renderAttributes": {
+              },
+              "renderType": "text",
+              "pattern": null,
+              "defaultValue": "Draft",
+              "visible": true,
+              "label": "Status",
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "rows": 1,
+              "defaultResourceName": null,
+              "type": "field",
+              "key": "63c5dbf36eba4e9ca362ee61192270d4",
+              "required": false
+            },
+            {
+              "enabled": true,
+              "dataType": "string",
+              "requiredMessage": null,
+              "name": "Internal Priority",
+              "omitWhenHidden": null,
+              "renderAttributes": {
+              },
+              "renderType": "text",
+              "pattern": null,
+              "defaultValue": null,
+              "visible": true,
+              "label": "Internal Priority",
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "rows": 1,
+              "defaultResourceName": null,
+              "type": "field",
+              "key": "41dcfc3aa5b14f348619d05934a2e34d",
+              "required": false
+            }
+          ]
+        },
+        {
+          "visible": true,
+          "renderAttributes": {
+          },
+          "name": "Submit Button",
+          "label": "Submit",
+          "type": "button",
+          "renderType": "submit-page",
+          "enabled": true
+        }
+      ],
+      "events": [
+        {
+          "name": "SetSubmitter",
+          "type": "Load",
+          "action": "Set Fields",
+          "mappings": [
+            {
+              "field": "Requested By",
+              "value": "${identity('username')}",
+              "visible": null
+            },
+            {
+              "field": "Requested By Display Name",
+              "value": "${identity('displayName')}",
+              "visible": null
+            }
+          ]
+        }
+      ],
+      "name": "Page 1",
+      "renderType": "submittable",
+      "type": "page"
+    },
+    {
+      "advanceCondition": null,
+      "displayCondition": null,
+      "displayPage": null,
+      "elements": [
+        {
+          "type": "content",
+          "renderType": "html",
+          "name": "Submission Received",
+          "text": "<p>Your submission has been received and will be processed ASAP.</p>",
+          "visible": true,
+          "renderAttributes": {
+          }
+        }
+      ],
+      "events": [
+
+      ],
+      "name": "Confirmation",
+      "renderType": "confirmation",
+      "type": "page"
+    }
+  ],
+  "securityPolicies": [
+
+  ],
+  "slug": "report-an-issue",
+  "status": "Active",
+  "submissionLabelExpression": "",
+  "type": null
+}

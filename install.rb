@@ -106,7 +106,7 @@ require File.join(File.expand_path(File.dirname(__FILE__)), "workflows.rb")
 
 # task source configurations
 task_source_properties = {
-  "Kinetic Request CE" => {
+  "Kinetic Platform" => {
     "Space Slug" => nil,
     "Web Server" => vars["core"]["server"],
     "Proxy Username" => vars["core"]["service_user_username"],
@@ -374,7 +374,7 @@ if (vars["data"]["requesting_user"])
     "username" => vars["data"]["requesting_user"]["username"],
     "email" => vars["data"]["requesting_user"]["email"],
     "displayName" => vars["data"]["requesting_user"]["displayName"],
-    "password" => "#{vars["data"]["requesting_user"]["email"]}2023",
+    "password" => "#{vars["data"]["requesting_user"]["email"]}2024",
     "enabled" => true,
     "spaceAdmin" => true,
   })

@@ -1,0 +1,60 @@
+<tree schema_version="1.0">
+    <sourceName>Kinetic Platform</sourceName>
+    <sourceGroup>b6124d39-d206-4ae4-959a-b126e10b327d</sourceGroup>
+    <type>Tree</type>
+    <status>Active</status>
+    <taskTree builder_version="" schema_version="1.0" version="">
+        <name>Send Welcome Email</name>
+        <author></author>
+        <notes></notes>
+        <lastID>1</lastID>
+        <request>
+            <task definition_id="system_start_v1" id="start" name="Start" x="61" y="71">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters></parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">smtp_email_send_v1_1</task>
+                </dependents>
+            </task>
+            <task definition_id="smtp_email_send_v1" id="smtp_email_send_v1_1" name="Send Welcome Email" x="320" y="84.5">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>true</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="error_handling" label="Error Handling" menu="Error Message,Raise Error" required="true" tooltip="Determine what to return if an error is encountered.">Raise Error</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="from" label="From (Email Address)" menu="" required="true" tooltip="The email address of the simulated sender.">wally@kinops.io</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="to" label="To (Email Address)" menu="" required="true" tooltip="The email address of the intended recipient.">&lt;%=  @user['Email'] %&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="bcc" label="Bcc (Email Address)" menu="" required="false" tooltip="The email address of the intended recipient."></parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="subject" label="Subject" menu="" required="false" tooltip="The subject of the email.">Kinetic Data Training Environment</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="htmlbody" label="HTML Body" menu="" required="false" tooltip="HTML representing the body of a rich email.">Hi &lt;%=  @user['Display Name'] %&gt;, &lt;br/&gt;&lt;br/&gt;
+
+We're excited to explore the intricacies of Kinetic Data's front-end development with you. Here's a link to your environment for use during the training. &lt;br/&gt;&lt;br/&gt;
+
+End User Portal: &lt;%=  @space_attributes['Web Server Url'] %&gt; &lt;br/&gt;
+Admin Portal: &lt;%=  @space_attributes['Web Server Url'] %&gt;/app &lt;br/&gt;&lt;br/&gt;
+
+Your username is: &lt;%=  @user['Email'] %&gt; &lt;br/&gt;
+Your password is: &lt;%=  @user['Email'] %&gt;2024 &lt;br/&gt;&lt;br/&gt;
+
+Please change the password after you verify you are able to access the space.
+
+We'll keep this environment around for 2 weeks after the training event. If you'd like to have it for longer, just let us know! &lt;br/&gt;&lt;br/&gt;
+
+Happy Learning! &lt;br/&gt;&lt;br/&gt;
+
+Kinetic Data</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="textbody" label="Alternate (text) Body" menu="" required="false" tooltip="A plaintext message that will be displayed if the recipient can't display multipart HTML emails."></parameter>
+                </parameters>
+                <messages></messages>
+                <dependents></dependents>
+            </task>
+        </request>
+    </taskTree>
+</tree>

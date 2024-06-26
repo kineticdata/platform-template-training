@@ -38,7 +38,7 @@
     {
       "name": "Web Server Url",
       "values": [
-        "https://training.kinops.io"
+        "https://training-template.kinops.io"
       ]
     }
   ],
@@ -48,13 +48,13 @@
   ],
   "defaultLocale": "en",
   "defaultTimezone": "America/Chicago",
-  "displayType": "Single Page App",
-  "displayValue": "https://s3.amazonaws.com/kinops.io/bundles/kinetic-starter-app/branches/training/index.html",
+  "displayType": "Custom",
+  "displayValue": "https://s3.amazonaws.com/kinops.io/bundles/kinetic-starter-react-base/branches/main/index.html",
   "enabledLocales": [
     "en"
   ],
   "loginPage": null,
-  "name": "Training Template",
+  "name": "Kinetic Data",
   "platformComponents": {
     "agents": [
 
@@ -97,11 +97,11 @@
   ],
   "sessionInactiveLimitInSeconds": 2592000,
   "sharedBundleBase": "hydrogen-v1",
-  "slug": "training",
+  "slug": "training-template",
   "trustedFrameDomains": [
-
+    "http://localhost:3000/"
   ],
   "trustedResourceDomains": [
-
+    "http://localhost:3000/"
   ]
 }
