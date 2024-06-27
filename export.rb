@@ -52,8 +52,7 @@ task_path = File.join(platform_template_path, "task")
 
 # Configuration of which submissions should be exported
 SUBMISSIONS_TO_EXPORT = [
-  # {"kappSlug" => "datastore", "formSlug" => "notification-data"},
-  # {"kappSlug" => "datastore", "formSlug" => "notification-template-dates"}
+  {"kappSlug" => "customer-portal", "formSlug" => "report-an-issue"},
 ]
 
 REMOVE_DATA_PROPERTIES = [
