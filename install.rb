@@ -155,9 +155,6 @@ space_sdk = KineticSdk::Core.new({
   options: http_options.merge({ export_directory: "#{core_path}" }),
 })
 
-# Set the Platform Source Name to Kinetic Platform (defaults to Kinetic Request CE)
-space_sdk.update_task_component({"platformSourceName": "Kinetic Platform"})
-
 # Add Kinetic Platform Bridge Adapter
 logger.info "Configuring Kinetic Platform Bridge and removing Kinetic Core Bridge"
 platform_bridge_body = { "slug": "kinetic-platform",
