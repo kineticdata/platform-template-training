@@ -106,7 +106,7 @@ require File.join(File.expand_path(File.dirname(__FILE__)), "workflows.rb")
 
 # task source configurations
 task_source_properties = {
-  "Kinetic Platform" => {
+  "Kinetic Request CE" => {
     "Space Slug" => nil,
     "Web Server" => vars["core"]["server"],
     "Proxy Username" => vars["core"]["service_user_username"],
